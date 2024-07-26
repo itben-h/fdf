@@ -6,7 +6,7 @@
 /*   By: bhowe <bhowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:30:47 by bhowe             #+#    #+#             */
-/*   Updated: 2024/07/23 16:45:28 by bhowe            ###   ########.fr       */
+/*   Updated: 2024/07/26 14:02:44 by bhowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static void	render_map(t_mlx *mlx)
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img->img, 0, 0);
 }
 
-void	start_render(t_mlx *mlx)
+int	start_render(t_mlx *mlx)
 {
 	clear_img(mlx->img);
 	reorient(mlx);
@@ -118,4 +118,5 @@ void	start_render(t_mlx *mlx)
 		refit(mlx);
 	else
 		render_map(mlx);
+	return (0);
 }

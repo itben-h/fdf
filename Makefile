@@ -6,7 +6,7 @@
 #    By: bhowe <bhowe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/11 18:52:45 by bhowe             #+#    #+#              #
-#    Updated: 2024/07/24 13:31:34 by bhowe            ###   ########.fr        #
+#    Updated: 2024/07/26 14:02:04 by bhowe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,17 +51,28 @@ RM			:= rm -rf
 COLOR_RED	:=\033[0;31m
 COLOR_END	:=\033[0m
 
-all: libft $(NAME)
+all: mlx libft $(NAME)
 
 bonus: all
 
-$(NAME): $(OBJ) $(LIBFT) $(MLX)
+$(NAME): $(MLX) $(LIBFT) $(OBJ)
 	@echo "$(COLOR_RED)making fdf ...$(COLOR_END)"
 	$(CC) $(CFLAG) $(OBJ) $(LIB) $(MLX_LIB) $(MLX_LINKS) -o $@
 
 %.o: %.c $(HEADER)
 	@echo "$(COLOR_RED)making obj ...$(COLOR_END)"
-	$(CC) $(CFLAG) $(INC_MLX) -c -g $< -o $@
+	$(CC) $(CFLAG) $(INC_MLX) -O3 -c $< -o $@
+
+mlx:
+	@if [ ! -d $(MLXDIR) ] || [ ! -f $(MLX) ]; then \
+		echo "$(COLOR_RED)MLX not found. Cloning and building ...$(COLOR_END)"; \
+		$(RM) $(MLX_DIR); \
+		git submodule deinit -f $(MLX_DIR); \
+		git submodule update --init $(MLX_DIR); \
+		$(MAKE) $(MLX_DIR) all; \
+	else \
+		echo "$(COLOR_RED)MLX already exists. Skipping ...$(COLOR_END)"; \
+	fi
 
 libft:
 	@echo "$(COLOR_RED)making libft ...$(COLOR_END)"
@@ -71,12 +82,14 @@ clean:
 	@echo "$(COLOR_RED)removing objs ...$(COLOR_END)"
 	$(RM) $(OBJ)
 	@$(MAKE) $(LIBFT_DIR) clean
+	@$(MAKE) $(MLX_DIR) clean
 
 fclean: clean
 	@echo "$(COLOR_RED)removing all libs '&' execs ...$(COLOR_END)"
 	$(RM) $(NAME)
 	@$(MAKE) $(LIBFT_DIR) fclean
+	$(RM) $(MLX_DIR)
 
 re: fclean all
 
-.PHONY: all clean flcean re bonus libft
+.PHONY: all clean flcean re libft mlx

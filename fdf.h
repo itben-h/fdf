@@ -6,7 +6,7 @@
 /*   By: bhowe <bhowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:49:45 by bhowe             #+#    #+#             */
-/*   Updated: 2024/07/26 13:23:15 by bhowe            ###   ########.fr       */
+/*   Updated: 2024/07/26 14:04:15 by bhowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_point	get_point(float x, float y, char *str);
 void	get_depth(t_map *map, t_point p);
 t_point	*pin_point(t_mlx *mlx, int i, int j);
 void	refresh_point(t_point *p);
-void	start_render(t_mlx *mlx);
+int		start_render(t_mlx *mlx);
 t_img	*new_img(t_mlx *mlx);
 t_img	*del_img(t_mlx *mlx, t_img *img);
 void	clear_img(t_img *img);
@@ -122,7 +122,6 @@ void	refit(t_mlx *mlx);
 int		oob_check(int x, int y);
 int		key_press(int keycode, t_mlx *mlx);
 int		close_window(t_mlx *mlx);
-int		e_check(t_mlx *mlx);
 void	e_mode(t_mlx *mlx);
 int		e_color(void);
 

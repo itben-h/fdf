@@ -6,7 +6,7 @@
 /*   By: bhowe <bhowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:26:18 by bhowe             #+#    #+#             */
-/*   Updated: 2024/07/23 17:05:20 by bhowe            ###   ########.fr       */
+/*   Updated: 2024/07/26 14:03:08 by bhowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ int	main(int argc, char **argv)
 	print_msg();
 	mlx_hook(mlx.window, 02, 1L << 0, key_press, &mlx);
 	mlx_hook(mlx.window, 17, 1L << 0, close_window, &mlx);
-	mlx_loop_hook(mlx.mlx, e_check, &mlx);
+	mlx_loop_hook(mlx.mlx, start_render, &mlx);
 	mlx_loop(mlx.mlx);
 }

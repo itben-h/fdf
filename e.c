@@ -6,7 +6,7 @@
 /*   By: bhowe <bhowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:04:06 by bhowe             #+#    #+#             */
-/*   Updated: 2024/07/23 16:55:38 by bhowe            ###   ########.fr       */
+/*   Updated: 2024/07/26 14:04:10 by bhowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,4 @@ void	e_mode(t_mlx *mlx)
 		r = rand() % 9;
 		e_do(r, &p[i]);
 	}
-}
-
-int	e_check(t_mlx *mlx)
-{
-	if (mlx->e_mode)
-	{
-		start_render(mlx);
-	}
-	return (0);
 }
