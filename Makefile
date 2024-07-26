@@ -82,13 +82,12 @@ clean:
 	@echo "$(COLOR_RED)removing objs ...$(COLOR_END)"
 	$(RM) $(OBJ)
 	@$(MAKE) $(LIBFT_DIR) clean
-	@$(MAKE) $(MLX_DIR) clean
 
 fclean: clean
 	@echo "$(COLOR_RED)removing all libs '&' execs ...$(COLOR_END)"
 	$(RM) $(NAME)
 	@$(MAKE) $(LIBFT_DIR) fclean
-	$(RM) $(MLX_DIR)
+	@$(MAKE) $(MLX_DIR) clean
 
 re: fclean all
 
