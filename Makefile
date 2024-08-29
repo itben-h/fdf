@@ -61,7 +61,7 @@ $(NAME): $(MLX) $(LIBFT) $(OBJ)
 
 %.o: %.c $(HEADER)
 	@echo "$(COLOR_RED)making obj ...$(COLOR_END)"
-	$(CC) $(CFLAG) $(INC_MLX) -O3 -c $< -o $@
+	$(CC) $(CFLAG) $(INC_MLX) -O3 -g -c $< -o $@
 
 mlx:
 	@if [ ! -d $(MLXDIR) ] || [ ! -f $(MLX) ]; then \
