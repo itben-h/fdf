@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_keypress.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bhowe <bhowe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bhowe <bhowe@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 16:37:56 by bhowe             #+#    #+#             */
-/*   Updated: 2024/07/23 17:04:11 by bhowe            ###   ########.fr       */
+/*   Updated: 2024/10/16 15:13:11 by bhowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static int	key_rotate(int keycode, t_mlx *mlx)
 
 static int	key_translate(int keycode, t_mlx *mlx)
 {
-	if (keycode == XK_Right)
+	if (keycode == XK_d)
 		mlx->cam->x += 5;
-	if (keycode == XK_Left)
+	if (keycode == XK_a)
 		mlx->cam->x -= 5;
-	if (keycode == XK_Down)
+	if (keycode == XK_s)
 		mlx->cam->y += 5;
-	if (keycode == XK_Up)
+	if (keycode == XK_w)
 		mlx->cam->y -= 5;
 	return (0);
 }
@@ -66,8 +66,8 @@ int	key_press(int keycode, t_mlx *mlx)
 		close_window(mlx);
 	if (keycode == XK_period || keycode == XK_comma)
 		key_zoom(keycode, mlx);
-	if (keycode == XK_Up || keycode == XK_Down
-		|| keycode == XK_Right || keycode == XK_Left)
+	if (keycode == XK_w || keycode == XK_s
+		|| keycode == XK_d || keycode == XK_a)
 		key_translate(keycode, mlx);
 	if (keycode == XK_j || keycode == XK_l
 		|| keycode == XK_i || keycode == XK_k
